@@ -81,8 +81,7 @@ const encode = async (id, quality) => {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=flac&rid=" + id;
     } else if (quality == "320") {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&rid=" + id;
-    }
-    else {
+    } else {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&br=1&rid=" + id;
     };
     let utf8Encode = new TextEncoder();
