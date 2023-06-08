@@ -1,7 +1,7 @@
 /**
  * @name lxmusics-source
  * @description 请合理使用
- * @version 1.0.1
+ * @version 1.0.2
  * @author lerdb & Folltoshe
  * @homepage https://github.com/lxmusics/music-public
  */
@@ -16,7 +16,6 @@ const httpRequest = (url, options) =>
         })
     })
 
-// https://github.com/lerdb/kwDES
 const encode = async (id, quality) => {
     var l = 7887891437440363641n;
     var Z = 4294967295n;
@@ -80,8 +79,11 @@ const encode = async (id, quality) => {
 
     if (quality == "flac") {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=flac&rid=" + id;
-    } else {
+    } else if (quality == "320") {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&rid=" + id;
+    }
+    else {
+        var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&br=1&rid=" + id;
     };
     let utf8Encode = new TextEncoder();
     var msgg = utf8Encode.encode(strOri);
@@ -163,8 +165,8 @@ const musicSources = {
 
         musicUrl({ songmid }, quality) {
             quality = {
-                '128k': 'aac',
-                '320k': 'mp3',
+                '128k': '128',
+                '320k': '320',
                 flac: 'flac',
             }[quality]
             return encode(g = songmid, h = quality).then(e => {
