@@ -79,10 +79,8 @@ const encode = async (id, quality) => {
 
     if (quality == "flac") {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=flac&rid=" + id;
-    } else if (quality == "320") {
+    }else {
         var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&rid=" + id;
-    } else {
-        var strOri = "corp=kuwo&p2p=1&type=convert_url2&format=mp3&br=1&rid=" + id;
     };
     let utf8Encode = new TextEncoder();
     var msgg = utf8Encode.encode(strOri);
